@@ -39,7 +39,7 @@ export function AnimatedBackground() {
       {floatingShapes.map((shape, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl"
+          className="absolute rounded-full bg-gradient-to-r from-gray-400/10 to-gray-600/10 blur-xl"
           style={{
             width: shape.width,
             height: shape.height,
@@ -64,7 +64,7 @@ export function AnimatedBackground() {
       {particles.map((particle, i) => (
         <motion.div
           key={`particle-${i}`}
-          className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+          className="absolute w-1 h-1 bg-gray-300/30 rounded-full"
           style={{
             left: particle.left,
             top: particle.top,

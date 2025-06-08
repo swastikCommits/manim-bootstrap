@@ -8,6 +8,7 @@ import { ChatBubble } from "@/components/chat-bubble"
 import { TypingIndicator } from "@/components/typing-indicator"
 import { PromptInput } from "@/components/prompt-input"
 import { AnimatedBackground } from "@/components/animated-background"
+import { StarBorder } from "@/components/ui/star-border"
 import {
   Calculator,
   TrendingUp,
@@ -133,10 +134,10 @@ export default function ManimInterface() {
             >
               <div className="text-2xl font-bold">Manim Studio</div>
               <div className="flex gap-3">
-                <Button variant="ghost" className="text-gray-400 hover:text-white">
+                <Button variant="ghost" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                   Sign In
                 </Button>
-                <Button className="bg-white text-black hover:bg-gray-200">Sign Up</Button>
+                <Button className="bg-gray-300 hover:bg-white text-gray-900">Sign Up</Button>
               </div>
             </motion.header>
 
@@ -149,8 +150,8 @@ export default function ManimInterface() {
                 transition={{ delay: 0.3 }}
                 className="mb-8"
               >
-                <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 px-4 py-2">
-                  <span className="w-2 h-2 bg-emerald-400 rounded-full mr-2"></span>
+                <Badge className="bg-gray-500/10 text-gray-300 border-gray-500/20 px-4 py-2">
+                  <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                   New: AI-Powered Manim Generation
                 </Badge>
               </motion.div>
@@ -172,48 +173,55 @@ export default function ManimInterface() {
                 transition={{ delay: 0.5 }}
                 className="w-full max-w-4xl mb-8"
               >
-                <div className="relative bg-gray-900/50 border border-gray-800 rounded-2xl p-6 backdrop-blur-sm">
-                  <textarea
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Describe the animation you want to create (e.g., 'Visualize bubble sort', 'Plot sine wave')..."
-                    className="w-full bg-transparent text-white placeholder-gray-500 resize-none outline-none text-lg leading-relaxed min-h-[80px]"
-                    rows={1}
-                    style={{overflow: 'hidden'}}
-                    onInput={e => {
-                      const target = e.target as HTMLTextAreaElement;
-                      target.style.height = 'auto';
-                      target.style.height = target.scrollHeight + 'px';
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
-                        handleStartChat(inputValue)
-                      }
-                    }}
-                  />
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="flex gap-2">
-                      <Button variant="ghost" size="sm" className="text-gray-400">
-                        New Project ↓
-                      </Button>
-                      <Button variant="ghost" size="sm" className="text-gray-400">
-                        Manim v0.18 ↓
-                      </Button>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button variant="ghost" size="icon" className="text-gray-400">
-                        <Play className="w-4 h-4" />
-                      </Button>
-                      <Button
-                        onClick={() => handleStartChat(inputValue)}
-                        disabled={!inputValue.trim()}
-                        className="bg-blue-600 hover:bg-blue-700 text-white disabled:opacity-50"
-                      >
-                        Generate Animation
-                      </Button>
+                <StarBorder 
+                  as="div" 
+                  className="block w-full" 
+                  color="rgb(169 169 169)"
+                  speed="8s"
+                >
+                  <div className="p-6 backdrop-blur-sm">
+                    <textarea
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      placeholder="Describe the animation you want to create (e.g., 'Visualize bubble sort', 'Plot sine wave')..."
+                      className="w-full bg-transparent text-white placeholder-gray-400 resize-none outline-none text-lg leading-relaxed min-h-[80px]"
+                      rows={1}
+                      style={{overflow: 'hidden'}}
+                      onInput={e => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = 'auto';
+                        target.style.height = target.scrollHeight + 'px';
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                          handleStartChat(inputValue)
+                        }
+                      }}
+                    />
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="flex gap-2">
+                        <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+                          New Project ↓
+                        </Button>
+                        <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+                          Manim v0.18 ↓
+                        </Button>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
+                          <Play className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          onClick={() => handleStartChat(inputValue)}
+                          disabled={!inputValue.trim()}
+                          className="bg-gray-300 hover:bg-white text-gray-900 disabled:opacity-50 disabled:bg-gray-500/50 disabled:text-gray-300"
+                        >
+                          Generate Animation
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </StarBorder>
               </motion.div>
 
               {/* Quick Actions */}
@@ -234,7 +242,7 @@ export default function ManimInterface() {
                     onClick={() => {
                       setInputValue(action.label.toLowerCase())
                     }}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all ${action.color}`}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-600 bg-gray-800/40 text-gray-300 hover:bg-gray-700/60 transition-all"
                   >
                     <action.icon className="w-4 h-4" />
                     <span className="text-sm">{action.label}</span>
@@ -268,7 +276,7 @@ export default function ManimInterface() {
                 </div>
                 <Button
                   onClick={() => setCurrentView("landing")}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  className="w-full bg-gray-300 hover:bg-white text-gray-900"
                 >
                   <Plus className="w-4 h-4 mr-2" />
                   New Animation
