@@ -23,6 +23,10 @@ const generateManimCode = async (prompt) => {
                   - Make the animation visually appealing and smooth
                   - Use creative use of shapes, graphs, text, or formulas (as needed)
                   - Do not include comments or explanations — only valid Python code
+                  - IMPORTANT: Use Text() instead of Tex() or MathTex() for all text
+                  - IMPORTANT: Use simple decimal numbers instead of PI or fractions in ranges
+                  - IMPORTANT: Avoid LaTeX symbols - use regular text only
+                  - For axes, use simple numbers like [-6, 6, 1] instead of [-PI, PI, PI/2]
 
                   Tips:
                   - Use animations like Create, Transform, Write, FadeIn, FadeOut, MoveTo, ScaleInPlace, Rotate, etc.
