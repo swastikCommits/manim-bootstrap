@@ -22,6 +22,7 @@ import {
   Play,
   History,
 } from "lucide-react"
+import { Spinner } from "@/components/ui/spinner"
 
 interface Message {
   id: string
@@ -44,6 +45,7 @@ export default function ManimInterface() {
   const [inputValue, setInputValue] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
   const [isGenerating, setIsGenerating] = useState(false)
+  const [isButtonLoading, setIsButtonLoading] = useState(false)
   const [projects] = useState<Project[]>([
     { id: "1", name: "Bubble Sort Visualization", lastModified: "2 hours ago" },
     { id: "2", name: "Sine Wave Animation", lastModified: "1 day ago" },
@@ -61,6 +63,7 @@ export default function ManimInterface() {
     setMessages([userMessage])
     setCurrentView("chat")
     setIsGenerating(true)
+    setIsButtonLoading(false)
 
     // Simulate AI response
     setTimeout(() => {
@@ -104,11 +107,11 @@ export default function ManimInterface() {
   }
 
   const quickActions = [
-    { icon: Calculator, label: "Visualize Algorithm", color: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
-    { icon: TrendingUp, label: "Math Equations", color: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
-    { icon: Upload, label: "Data Visualization", color: "bg-green-500/10 text-green-400 border-green-500/20" },
-    { icon: FileText, label: "Physics Simulation", color: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
-    { icon: Zap, label: "Custom Animation", color: "bg-pink-500/10 text-pink-400 border-pink-500/20" },
+    { icon: Calculator, label: "Visualize Algorithm", color: "bg-gray-800/30 text-gray-300 border-gray-700/40" },
+    { icon: TrendingUp, label: "Math Equations", color: "bg-gray-800/30 text-gray-300 border-gray-700/40" },
+    { icon: Upload, label: "Data Visualization", color: "bg-gray-800/30 text-gray-300 border-gray-700/40" },
+    { icon: FileText, label: "Physics Simulation", color: "bg-gray-800/30 text-gray-300 border-gray-700/40" },
+    { icon: Zap, label: "Custom Animation", color: "bg-gray-800/30 text-gray-300 border-gray-700/40" },
   ]
 
   return (
@@ -163,7 +166,7 @@ export default function ManimInterface() {
                 transition={{ delay: 0.4 }}
                 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
               >
-                What animation can I help you create?
+                Got an idea? Type it — I’ll animate it.
               </motion.h1>
 
               {/* Input Area */}
@@ -179,7 +182,7 @@ export default function ManimInterface() {
                   color="rgb(169 169 169)"
                   speed="8s"
                 >
-                  <div className="p-6 backdrop-blur-sm">
+                  <div className="p-6 pb-2 backdrop-blur-sm">
                     <textarea
                       value={inputValue}
                       onChange={(e) => setInputValue(e.target.value)}
@@ -201,22 +204,27 @@ export default function ManimInterface() {
                     <div className="flex justify-between items-center mt-4">
                       <div className="flex gap-2">
                         <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
-                          New Project ↓
-                        </Button>
-                        <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
                           Manim v0.18 ↓
                         </Button>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="ghost" size="icon" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
-                          <Play className="w-4 h-4" />
-                        </Button>
+                        
                         <Button
-                          onClick={() => handleStartChat(inputValue)}
-                          disabled={!inputValue.trim()}
+                          onClick={() => {
+                            setIsButtonLoading(true);
+                            handleStartChat(inputValue);
+                          }}
+                          disabled={!inputValue.trim() || isButtonLoading}
                           className="bg-gray-300 hover:bg-white text-gray-900 disabled:opacity-50 disabled:bg-gray-500/50 disabled:text-gray-300"
                         >
-                          Generate Animation
+                          {isButtonLoading ? (
+                            <div className="flex items-center">
+                              <Spinner size="sm" color="slate" />
+                              <span className="ml-2">Generating...</span>
+                            </div>
+                          ) : (
+                            "Generate Animation"
+                          )}
                         </Button>
                       </div>
                     </div>
@@ -242,7 +250,7 @@ export default function ManimInterface() {
                     onClick={() => {
                       setInputValue(action.label.toLowerCase())
                     }}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-600 bg-gray-800/40 text-gray-300 hover:bg-gray-700/60 transition-all"
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg border backdrop-blur-sm transition-all ${action.color} hover:bg-gray-700/50 hover:text-white hover:border-gray-500/70`}
                   >
                     <action.icon className="w-4 h-4" />
                     <span className="text-sm">{action.label}</span>

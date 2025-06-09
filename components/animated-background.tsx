@@ -33,6 +33,28 @@ export function AnimatedBackground() {
     []
   )
 
+  // Generate twinkling stars - reduced from 50 to 25 (50% reduction)
+  const stars = useMemo(() =>
+    Array.from({ length: 25 }).map(() => {
+      // Create three layers for parallax effect
+      const layer = Math.floor(Math.random() * 3); // 0, 1, or 2
+      const parallaxSpeed = 20 + (layer * 10); // 20, 30, or 40 seconds
+      const depth = 1 - (layer * 0.2); // 1, 0.8, or 0.6 opacity based on layer
+      
+      return {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        size: Math.random() * 2 + 1,
+        duration: Math.random() * 3 + 2,
+        delay: Math.random() * 5,
+        layer,
+        parallaxSpeed,
+        depth,
+      }
+    }),
+    []
+  )
+
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {/* Floating Shapes */}
@@ -77,6 +99,46 @@ export function AnimatedBackground() {
             duration: particle.duration,
             repeat: Number.POSITIVE_INFINITY,
             delay: particle.delay,
+          }}
+        />
+      ))}
+
+      {/* Twinkling Stars with Parallax */}
+      {stars.map((star, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className={`absolute rounded-full bg-white ${star.layer > 0 ? 'blur-[0.5px]' : ''}`}
+          style={{
+            width: star.size,
+            height: star.size,
+            left: star.left,
+            top: star.top,
+            opacity: star.depth * 0.7, // Reduced opacity
+          }}
+          animate={{
+            opacity: [star.depth * 0.5, star.depth * 0.7, star.depth * 0.5],
+            scale: [0.8, 1.2, 0.8],
+            x: [0, star.layer * 10, 0], // Subtle horizontal parallax based on layer
+          }}
+          transition={{
+            opacity: {
+              duration: star.duration,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: star.delay,
+              ease: "easeInOut",
+            },
+            scale: {
+              duration: star.duration,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: star.delay,
+              ease: "easeInOut",
+            },
+            x: {
+              duration: star.parallaxSpeed,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }
           }}
         />
       ))}

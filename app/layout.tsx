@@ -6,9 +6,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "v0 Interface Clone",
-  description: "A beautiful v0.dev inspired interface with smooth animations",
-    generator: 'v0.dev'
+  title: "Manim Studio",
+  description: "Create animations with Manim",
+  generator: 'Manim Studio'
 }
 
 export default function RootLayout({
