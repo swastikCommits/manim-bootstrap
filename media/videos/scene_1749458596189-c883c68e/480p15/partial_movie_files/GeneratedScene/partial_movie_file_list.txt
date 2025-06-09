@@ -1,0 +1,11 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/1185818338_3339907427_223132457.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_2327319940_2299821989.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_3849664555_2828670892.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_2044416378_810797620.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_4187838428_2780609380.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_1131144437_3356962894.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_3631213096_3497581968.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_1839128356_791297276.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_1290382549_1101682277.mp4'
+file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458596189-c883c68e/480p15/partial_movie_files/GeneratedScene/624642324_2408024828_3893278863.mp4'
