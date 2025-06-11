@@ -153,7 +153,7 @@ export default function ManimInterface() {
                 transition={{ delay: 0.3 }}
                 className="mb-8"
               >
-                <Badge className="bg-gray-500/10 text-gray-300 border-gray-500/20 px-4 py-2">
+                <Badge className="bg-gray-500/10 text-gray-300 border-gray-500/20 hover:bg-blue-900/40 hover:text-white hover:border-blue-500/40 px-4 py-2">
                   <span className="w-2 h-2 bg-gray-400 rounded-full mr-2"></span>
                   New: AI-Powered Manim Generation
                 </Badge>
@@ -166,7 +166,7 @@ export default function ManimInterface() {
                 transition={{ delay: 0.4 }}
                 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
               >
-                Got an idea? Type it — I’ll animate it.
+                Got an idea? Type it — I'll animate it.
               </motion.h1>
 
               {/* Input Area */}
@@ -204,7 +204,7 @@ export default function ManimInterface() {
                     <div className="flex justify-between items-center mt-4">
                       <div className="flex gap-2">
                         <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-gray-700/50">
-                          Manim v0.18 ↓
+                          Manim v0.19 ↓
                         </Button>
                       </div>
                       <div className="flex gap-2">

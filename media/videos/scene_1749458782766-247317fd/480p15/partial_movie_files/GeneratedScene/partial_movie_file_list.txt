@@ -1,5 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458782766-247317fd/480p15/partial_movie_files/GeneratedScene/1185818338_2007108071_223132457.mp4'
-file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458782766-247317fd/480p15/partial_movie_files/GeneratedScene/624642324_1123188979_2307114887.mp4'
-file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458782766-247317fd/480p15/partial_movie_files/GeneratedScene/624642324_940860974_54537157.mp4'
-file 'file:C:/Users/ASUS/Desktop/Coding/Manim/media/videos/scene_1749458782766-247317fd/480p15/partial_movie_files/GeneratedScene/624642324_2408024828_3646621910.mp4'

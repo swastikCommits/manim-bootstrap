@@ -10,31 +10,17 @@ const generateManimCode = async (prompt) => {
           {
             parts: [
               {
-                text: `You are an expert Manim animator and Python developer.
+                text: `"${prompt}"
+                Generate valid and executable Python code for a Manim animation based strictly on the official Manim documentation (https://docs.manim.community). 
 
-                  Task:
-                  Generate an elegant, high-quality Manim animation in Python based on the following concept: "${prompt}"
-
-                  Constraints:
-                  - Only output a Python file with one class that extends Scene
-                  - Class name must be 'GeneratedScene'
-                  - Include required import: 'from manim import *'
-                  - Animation must include motion, transformations, color, labels, and timing
-                  - Make the animation visually appealing and smooth
-                  - Use creative use of shapes, graphs, text, or formulas (as needed)
-                  - Do not include comments or explanations — only valid Python code
-                  - IMPORTANT: Use Text() instead of Tex() or MathTex() for all text
-                  - IMPORTANT: Use simple decimal numbers instead of PI or fractions in ranges
-                  - IMPORTANT: Avoid LaTeX symbols - use regular text only
-                  - For axes, use simple numbers like [-6, 6, 1] instead of [-PI, PI, PI/2]
-
-                  Tips:
-                  - Use animations like Create, Transform, Write, FadeIn, FadeOut, MoveTo, ScaleInPlace, Rotate, etc.
-                  - Use updaters if needed for dynamic behavior
-                  - Arrange layout visually (centered, grouped, aligned)
-                  - Avoid any placeholders or “pass” statements
-
-                  Final output: Clean and complete Python code for Manim.`
+                  Instructions:
+                  - Start with all required imports (e.g., 'from manim import *').
+                  - Define a class named 'Animation' that inherits from 'Scene' or a relevant Scene subclass.
+                  - Implement a 'construct' method containing the animation logic.
+                  - Python code can contain explanations, if specified by user (as part of the animation itself, but should be non intrusive and non-overlapping)
+                  - Do not assume any external assets (e.g., SVGs, images, audio). Everything must be created using Manim primitives, objects, and methods.
+                  - The code must be fully self-contained, syntactically correct, and ready to run.
+                  - Do not include explanations, comments, or markdown—only return the raw Python code `
                                 }
                               ]
                             }
@@ -70,8 +56,6 @@ const generateManimCode = async (prompt) => {
   } catch (error) {
     console.error("Gemini API error:", error.response?.data || error.message);
     
-    // Provide fallback template based on prompt
-    return generateFallbackCode(prompt);
   }
 };
 module.exports = generateManimCode;
